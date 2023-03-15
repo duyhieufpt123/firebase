@@ -12,15 +12,20 @@ export const AuthContextProvider = ({ children }) => {
     const logOut =()=>{
         signOut(auth)
     }
-    useEffect(()=>{
-        const unSubscribe = onAuthStateChanged(auth, (currentUser)=>{
-            setUser(currentUser);
-            console.log('User', currentUser);
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+          if (currentUser) {
+            const { displayName, photoURL } = currentUser;
+            setUser({ ...currentUser, displayName, photoURL });
+          } else {
+            setUser(null);
+          }
         });
-        return ()=>{
-            unSubscribe();
- }
-    },[]);
+        return () => {
+          unSubscribe();
+        };
+      }, []);
+      
 return(
     <AuthContext.Provider value={{googleSignIn, logOut, user}}>
         {children}

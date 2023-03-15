@@ -7,6 +7,8 @@ import Read from './components/read';
 import ResponsiveAppBar from './components/ResponsiveAppBar';
 import Create from './components/create';
 import Update from './components/update';
+import Home from './components/home';
+import About from './components/about';
 function App() {
   return (
 
@@ -16,13 +18,19 @@ function App() {
           <Route path="/login" element={<Login/>}></Route>
         </Routes>
         <Routes>
-      <Route path='/' element={<Protected><Read /></Protected>}></Route>
+      <Route path='/' element={<Home />}></Route>
+      </Routes>
+      <Routes>
+      <Route path='/about' element={<About />}></Route>
+      </Routes>
+        <Routes>
+      <Route path='/dashboard' element={<Protected><Read /></Protected>}></Route>
       </Routes>
       <Routes>
       <Route path='/create' element={<Protected><Create /></Protected>}></Route>
       </Routes>
       <Routes>
-      <Route path='/update' element={<Protected><Update /></Protected>}></Route>
+      <Route path='/update/:id' element={<Protected><Update /></Protected>}></Route>
       </Routes>
     </div>
   );
