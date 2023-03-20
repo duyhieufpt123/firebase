@@ -56,6 +56,10 @@ export default function Read() {
         console.log(data)
         navigate(`detail/${data.id}`)
     }
+    const showdetail2 = (data) => {
+        console.log(data)
+        navigate(`update/${data.id}`)
+    }
     const totalPages = Math.ceil(APIData.length / itemsPerPage);
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -72,7 +76,7 @@ export default function Read() {
                     <TableCell>
                         <Button >
                             <Link style={{ textDecoration: 'none' }}>
-                                Update
+                                Detail
                             </Link>
                         </Button>
                     </TableCell>
@@ -115,7 +119,7 @@ export default function Read() {
     return (
         <div>
             <Button>
-                <Link to="/create">Create a new user</Link>
+                <Link to="/create">Create</Link>
             </Button>
             <Table singleLine>
                 <TableHead>
@@ -140,7 +144,7 @@ export default function Read() {
                                     </Button>
                                 </TableCell>
                                 <TableCell>
-                                    <Button onClick={() => showdetail(data)} >
+                                    <Button onClick={() => showdetail2(data)} >
                                         Update
                                     </Button>
                                 </TableCell>

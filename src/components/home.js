@@ -53,9 +53,13 @@ export default function Home() {
     };
 
     const showdetail = (data) => {
-        console.log(data)
-        navigate(`update/${data.id}`)
-    }
+      console.log(data)
+      navigate(`detail/${data.id}`)
+  }
+  const showdetail2 = (data) => {
+      console.log(data)
+      navigate(`update/${data.id}`)
+  }
     const totalPages = Math.ceil(APIData.length / itemsPerPage);
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -73,6 +77,13 @@ export default function Home() {
                         <Button onClick={() => setData(data)}>
                             <Link style={{ textDecoration: 'none' }}>
                                 Update
+                            </Link>
+                        </Button>
+                    </TableCell>
+                    <TableCell>
+                        <Button onClick={() => setData(data.description)}>
+                            <Link style={{ textDecoration: 'none' }}>
+                                Detail
                             </Link>
                         </Button>
                     </TableCell>
@@ -128,8 +139,13 @@ export default function Home() {
                                 <TableCell>{data.price}</TableCell>
                                 <TableCell>{data.image}</TableCell>
                                 <TableCell>
-                                    <Button onClick={() => showdetail(data)} >
+                                    <Button onClick={() => showdetail(data.description)} >
                                         Detail
+                                    </Button>
+                                </TableCell>
+                                <TableCell>
+                                    <Button onClick={() => showdetail2(data)} >
+                                        Update
                                     </Button>
                                 </TableCell>
                                 <TableCell>

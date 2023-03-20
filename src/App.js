@@ -8,6 +8,7 @@ import ResponsiveAppBar from './components/ResponsiveAppBar';
 import Create from './components/create';
 import Update from './components/update';
 import Home from './components/home';
+import Detail from './components/detail';
 function App() {
   return (
 

@@ -5,12 +5,10 @@ import { useParams } from 'react-router-dom';
 
 export default function Update() {
     const [data, setData] = useState({
-        checkbox: false,
-        gender: false,
         id: '',
-        name: "",
-        phone: "",
-        username: "",
+        description: "",
+        price: "",
+        image: "",
     })
     const params = useParams()
     useEffect(() => {
@@ -18,7 +16,7 @@ export default function Update() {
         var config = {
             method: 'get',
             maxBodyLength: Infinity,
-            url: `https://63b6ffdc4f17e3a931c78f96.mockapi.io/user/${params.id}`,
+            url: `https://6417ca17cc5fd8ffb17699b8.mockapi.io/product/${params.id}`,
             headers: {},
             data: data
         };
@@ -39,7 +37,7 @@ export default function Update() {
         const config = {
           method: 'put',
           maxBodyLength: Infinity,
-          url: `https://63b6ffdc4f17e3a931c78f96.mockapi.io/user/${data.id}`,
+          url: `https://6417ca17cc5fd8ffb17699b8.mockapi.io/product/${data.id}`,
           headers: {},
           data: data
         };
@@ -64,7 +62,7 @@ export default function Update() {
                         id: e.target.value
                     }
                 })} />
-                <TextField label="Name" placeholder="Name" value={data.name}
+                <TextField label="Title" placeholder="Name" value={data.description}
                     onChange={(e) => setData((prev) => {
                         return {
                             ...prev,
@@ -73,7 +71,7 @@ export default function Update() {
                     })
 
                     } />
-                <TextField label="Username" placeholder="Username" value={data.username}
+                <TextField label="Price" placeholder="Username" value={data.price}
 
 
                     onChange={(e) => setData((prev) => {
@@ -83,19 +81,11 @@ export default function Update() {
                         }
                     })
                     } />
-                <TextField label="Phone" placeholder="Phone" value={data.phone}
+                <TextField label="Image" placeholder="Phone" value={data.image}
                     onChange={(e) => setData((prev) => {
                         return {
                             ...prev,
                             phone: e.target.value
-                        }
-                    })
-                    } />
-                <Checkbox checked={data.checked}
-                    onChange={(e) => setData((prev) => {
-                        return {
-                            ...prev,
-                            checked: e.target.value
                         }
                     })
                     } />
