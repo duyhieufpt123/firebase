@@ -70,7 +70,7 @@ export default function Home() {
             return (
                 <TableRow key={data.id}>
                     <TableCell>{data.id}</TableCell>
-                    <TableCell>{data.description}</TableCell>
+                    <TableCell><Link>{data.description}</Link></TableCell>
                     <TableCell>{data.price}</TableCell>
                     <TableCell>{data.image}</TableCell>
                     <TableCell>
@@ -135,7 +135,7 @@ export default function Home() {
                         return (
                             <TableRow key={data.id}>
                                 <TableCell>{data.id}</TableCell>
-                                <TableCell>{data.description}</TableCell>
+                                <TableCell><Link to="/detail">{data.description}</Link></TableCell>
                                 <TableCell>{data.price}</TableCell>
                                 <TableCell>{data.image}</TableCell>
                                 <TableCell>

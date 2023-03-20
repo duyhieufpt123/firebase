@@ -71,7 +71,7 @@ export default function Update() {
                     })
 
                     } />
-                <TextField label="Price" placeholder="Username" value={data.price}
+                <TextField label="Price" placeholder="Username" 
 
 
                     onChange={(e) => setData((prev) => {
