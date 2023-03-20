@@ -8,7 +8,6 @@ import ResponsiveAppBar from './components/ResponsiveAppBar';
 import Create from './components/create';
 import Update from './components/update';
 import Home from './components/home';
-import About from './components/about';
 function App() {
   return (
 
@@ -20,9 +19,6 @@ function App() {
         <Routes>
       <Route path='/' element={<Home />}></Route>
       </Routes>
-      <Routes>
-      <Route path='/about' element={<About />}></Route>
-      </Routes>
         <Routes>
       <Route path='/dashboard' element={<Protected><Read /></Protected>}></Route>
       </Routes>
@@ -31,6 +27,9 @@ function App() {
       </Routes>
       <Routes>
       <Route path='/update/:id' element={<Protected><Update /></Protected>}></Route>
+      </Routes>
+      <Routes>
+      <Route path='/detail/:id' element={<Protected><Detail /></Protected>}></Route>
       </Routes>
     </div>
   );

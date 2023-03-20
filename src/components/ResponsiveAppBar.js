@@ -14,7 +14,7 @@ import Tooltip from '@mui/material/Tooltip';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
 import { UserAuth } from '../AuthContext';
-const pages = ['Home', 'About', 'News'];
+const pages = [];
 function ResponsiveAppBar() {
   const {user, logOut} = UserAuth();
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -42,11 +42,11 @@ const handleSignOut = async ()=>{
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Typography
+        <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="/"
+            component={Link} // Link component instead of anchor tag
+            to="/" // Home route
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -58,6 +58,57 @@ const handleSignOut = async ()=>{
             }}
           >
             LOGO
+          </Typography>
+          <Typography
+            variant="h6"
+            noWrap
+            component={Link} // Link component instead of anchor tag
+            to="/" // Home route
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            Home
+          </Typography>
+          <Typography
+            variant="h6"
+            noWrap
+            component={Link} // 
+            to="/" // Home route
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            News
+          </Typography>
+          <Typography
+            variant="h6"
+            noWrap
+            component={Link} // Link component instead of anchor tag
+            to="/" // Home route
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            Contact
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton

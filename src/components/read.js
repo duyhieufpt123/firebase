@@ -17,7 +17,7 @@ export default function Read() {
 
     useEffect(() => {
         axios
-            .get(`https://63b6ffdc4f17e3a931c78f96.mockapi.io/user`)
+            .get(`https://6417ca17cc5fd8ffb17699b8.mockapi.io/product`)
             .then((response) => {
                 console.log(response.data);
                 setAPIData(response.data);
@@ -25,17 +25,16 @@ export default function Read() {
     }, []);
 
     const setData = (data) => {
-        let { id, name, username, phone, checkbox } = data;
+        let { id, description, price, image } = data;
         localStorage.setItem('ID', id);
-        localStorage.setItem('Name', name);
-        localStorage.setItem('Username', username);
-        localStorage.setItem('Phone', phone);
-        localStorage.setItem('Checkbox Value', checkbox);
+        localStorage.setItem('Title', description);
+        localStorage.setItem('price', price);
+        localStorage.setItem('image', image);
     };
 
     const getData = () => {
         axios
-            .get(`https://63b6ffdc4f17e3a931c78f96.mockapi.io/user`)
+            .get(`https://6417ca17cc5fd8ffb17699b8.mockapi.io/product`)
             .then((getData) => {
                 setAPIData(getData.data);
             });
@@ -43,7 +42,7 @@ export default function Read() {
 
     const onDelete = (id) => {
         axios
-            .delete(`https://63b6ffdc4f17e3a931c78f96.mockapi.io/user/${id}`)
+            .delete(`https://6417ca17cc5fd8ffb17699b8.mockapi.io/product/${id}`)
             .then(() => {
                 getData();
             })
@@ -55,7 +54,7 @@ export default function Read() {
 
     const showdetail = (data) => {
         console.log(data)
-        navigate(`update/${data.id}`)
+        navigate(`detail/${data.id}`)
     }
     const totalPages = Math.ceil(APIData.length / itemsPerPage);
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -67,10 +66,16 @@ export default function Read() {
             return (
                 <TableRow key={data.id}>
                     <TableCell>{data.id}</TableCell>
-                    <TableCell>{data.name}</TableCell>
-                    <TableCell>{data.username}</TableCell>
-                    <TableCell>{data.phone}</TableCell>
-                    <TableCell>{data.checkbox ? 'Male' : 'Female'}</TableCell>
+                    <TableCell><Link>{data.description}</Link></TableCell>
+                    <TableCell>{data.price}</TableCell>
+                    <TableCell>{data.image}</TableCell>
+                    <TableCell>
+                        <Button >
+                            <Link style={{ textDecoration: 'none' }}>
+                                Update
+                            </Link>
+                        </Button>
+                    </TableCell>
                     <TableCell>
                         <Button onClick={() => setData(data)}>
                             <Link style={{ textDecoration: 'none' }}>
@@ -116,12 +121,9 @@ export default function Read() {
                 <TableHead>
                     <TableRow>
                         <TableCell>ID</TableCell>
-                        <TableCell>Name</TableCell>
-                        <TableCell>UserName</TableCell>
-                        <TableCell>Phone</TableCell>
-                        <TableCell>Gender</TableCell>
-                        <TableCell>Update</TableCell>
-                        <TableCell>Delete</TableCell>
+                        <TableCell>Title</TableCell>
+                        <TableCell>price</TableCell>
+                        <TableCell>image</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -129,10 +131,14 @@ export default function Read() {
                         return (
                             <TableRow key={data.id}>
                                 <TableCell>{data.id}</TableCell>
-                                <TableCell>{data.name}</TableCell>
-                                <TableCell>{data.username}</TableCell>
-                                <TableCell>{data.phone}</TableCell>
-                                <TableCell>{data.checkbox ? 'Male' : 'Female'}</TableCell>
+                                <TableCell><Link>{data.description}</Link></TableCell>
+                                <TableCell>{data.price}</TableCell>
+                                <TableCell>{data.image}</TableCell>
+                                <TableCell>
+                                    <Button onClick={() => showdetail(data)} >
+                                        Detail
+                                    </Button>
+                                </TableCell>
                                 <TableCell>
                                     <Button onClick={() => showdetail(data)} >
                                         Update
